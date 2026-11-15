@@ -1,0 +1,12 @@
+{
+  "name": "sveltia-hu-translation",
+  "private": true,
+  "type": "module",
+  "description": "Hungarian localization of Sveltia CMS and Sveltia UI, with review notes and a validator",
+  "scripts": {
+    "validate": "node validate.mjs"
+  },
+  "dependencies": {
+    "yaml": "2.5.1"
+  }
+}
