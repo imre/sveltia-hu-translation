@@ -118,11 +118,13 @@ text_editor:
   heading_6: Heading 6
   bulleted_list: Bulleted List
   numbered_list: Numbered List
+  task_list: Task List
   blockquote: Block Quote
   code_block: Code Block
   # Inline style button aria-labels
   bold: Bold
   italic: Italic
+  underline: Underline
   strikethrough: Strikethrough
   code: Code
   link: Link

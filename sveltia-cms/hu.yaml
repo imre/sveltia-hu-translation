@@ -688,21 +688,6 @@ enter_new_name_for_folder: |
     0   {{ Add meg alább az új nevet. }}
     one {{ Add meg alább az új nevet. A mappában lévő médiafájl is áthelyeződik, és az azt használó bejegyzések frissülnek. }}
     *   {{ Add meg alább az új nevet. A mappában lévő {$count} médiafájl is áthelyeződik, és az azokat használó bejegyzések frissülnek. }}
-# Rename Folder dialog body text for a cloud storage service, whose files are hotlinked from the
-# entries, so a move changes the URLs and the entries aren’t updated
-enter_new_name_for_external_folder: |
-  .input {$count :integer}
-  .match $count
-    0   {{ Add meg alább az új nevet. }}
-    one {{ Add meg alább az új nevet. A mappában lévő fájl is áthelyeződik, és megváltozik az URL-je, ezért frissítsd az azt használó bejegyzéseket. }}
-    *   {{ Add meg alább az új nevet. A mappában lévő {$count} fájl is áthelyeződik, és megváltoznak az URL-jeik, ezért frissítsd az azokat használó bejegyzéseket. }}
-# Rename Folder dialog for a cloud storage service: warning shown when entries link to files in the
-# folder, which aren’t updated. {$count} is the number of entries
-renaming_external_folder_breaks_links: |
-  .input {$count :integer}
-  .match $count
-    one {{ Egy bejegyzés hivatkozik egy ebben a mappában lévő fájlra. A bejegyzés nem frissül, így a hivatkozás a mappa átnevezése után nem fog működni. }}
-    *   {{ {$count} bejegyzés hivatkozik ebben a mappában lévő fájlokra. A bejegyzések nem frissülnek, így a hivatkozások a mappa átnevezése után nem fognak működni. }}
 # Delete Folder confirmation
 # {$name} is the folder name and {$count} is the number of assets in the folder
 confirm_deleting_folder: |
@@ -733,6 +718,47 @@ edit_x: 'Szerkesztés: {$name}'
 # Asset text editor: switch for line wrapping
 wrap_long_lines: Hosszú sorok tördelése
 
+# Move assets: dialog for moving assets to another folder in the repository
+move: Áthelyezés
+move_asset: Médiafájl áthelyezése
+# Dialog title. {$name} is the asset name when a single asset is moved, and {$count} is the number of
+# assets being moved
+move_assets_title: |
+  .input {$count :integer}
+  .match $count
+    one {{ Áthelyezés: {$name} }}
+    *   {{ {$count} médiafájl áthelyezése }}
+# Dialog body text. {$count} is the number of entries that currently use the assets
+select_asset_move_destination: |
+  .input {$count :integer}
+  .match $count
+    0   {{ Válaszd ki a célmappát. }}
+    one {{ Válaszd ki a célmappát. A médiafájlokat használó bejegyzés is frissül. }}
+    *   {{ Válaszd ki a célmappát. A médiafájlokat használó {$count} bejegyzés is frissül. }}
+# Accessible label of the folder tree in the Move dialog
+asset_move_destination: Célmappa
+# Shown when the assets being moved are all in the selected folder already
+assets_already_in_folder: |
+  .input {$count :integer}
+  .match $count
+    one {{ A médiafájl már ebben a mappában van. }}
+    *   {{ A médiafájlok már ebben a mappában vannak. }}
+# Shown when files with the same names exist in the selected folder. {$names} is a comma-separated
+# list of file names
+asset_move_conflict: 'Ebben a mappában már léteznek a következő fájlok: {$names}.'
+moving_assets: Médiafájlok áthelyezése…
+moving_assets_failed: Nem sikerült áthelyezni a médiafájlokat.
+# Warning shown when files have been moved off a cloud storage service, but the originals couldn’t
+# be deleted from it
+asset_move_cleanup_failed: A fájlokat áthelyeztük, de az eredetieket nem sikerült törölni a tárhelyszolgáltatásból.
+# Shown when files on a cloud storage service can’t be renamed or moved, because the entries using
+# them can’t be updated, e.g. for an Open Authoring contributor. {$count} is the number of files
+cannot_change_used_external_files: |
+  .input {$count :integer}
+  .match $count
+    one {{ Ez a fájl nem nevezhető át és nem helyezhető át, mert az azt használó bejegyzések nem frissíthetők. }}
+    *   {{ Ezek a fájlok nem nevezhetők át és nem helyezhetők át, mert az azokat használó bejegyzések nem frissíthetők. }}
+
 # Rename asset: dialog and validation
 rename_asset: Médiafájl átnevezése
 # {$name} is the current asset name
@@ -745,13 +771,6 @@ enter_new_name_for_asset: |
     0   {{ Add meg alább az új nevet. }}
     one {{ Add meg alább az új nevet. A médiafájlt használó bejegyzés is frissül. }}
     *   {{ Add meg alább az új nevet. A médiafájlt használó {$count} bejegyzés is frissül. }}
-# Rename Asset dialog for a file on a cloud storage service: warning shown when entries link to the
-# file, which aren’t updated. {$count} is the number of entries
-renaming_external_asset_breaks_links: |
-  .input {$count :integer}
-  .match $count
-    one {{ Egy bejegyzés hivatkozik erre a fájlra. A bejegyzés nem frissül, így a hivatkozás a fájl átnevezése után nem fog működni. }}
-    *   {{ {$count} bejegyzés hivatkozik erre a fájlra. A bejegyzések nem frissülnek, így a hivatkozások a fájl átnevezése után nem fognak működni. }}
 # Validation errors for asset renaming
 enter_new_name_for_asset_error:
   empty: A fájlnév nem lehet üres.
@@ -2515,6 +2534,12 @@ workflow:
   # Error notification when an entry can’t be published because its branch has been committed to
   # since the entry was opened, so what would be published isn’t what was reviewed
   publish_refused_entry_changed: A bejegyzés megváltozott, mióta megnyitottad. Töltsd újra az oldalt, és nézd át a legfrissebb verziót a közzététel előtt.
+  review_on_x: Áttekintés a(z) {$service} oldalán
+  from_fork: Forkból
+  fork_entry_editable: Ez a bejegyzés egy közreműködő pull requestjéből származik, amelyet a(z) „{$fork}” forkból nyitott. A módosításaidat az ő ágára mentjük. A pull requestet a Git-szolgáltatásban nézheted át és olvaszthatod be.
+  fork_entry_locked: Ez a bejegyzés egy közreműködő pull requestjéből származik, amelyet a(z) „{$fork}” forkból nyitott. A közreműködő nem engedélyezi, hogy a karbantartók szerkesszék, ezért itt csak megtekinthető.
+  fork_not_editable: A közreműködő nem engedélyezi, hogy a karbantartók szerkesszék ezt a pull requestet.
+  fork_entry_gone: A közreműködő pull requestje már nincs nyitva, ezért a módosítások nem menthetők bele.
   # Error shown in the save error dialog when an entry can’t be saved for review, because a request
   # the CMS doesn’t show is already open from the branch the entry would be saved to. `{$number}` is
   # the request number, e.g. `#12` on GitHub or `!12` on GitLab. Keep the wording free of Git jargon

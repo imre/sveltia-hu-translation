@@ -1,6 +1,5 @@
 // Checks the Hungarian drafts against the English sources they were translated from.
-// Run from the repository root (npm install && npm run validate), or with Docker:
-//   docker run --rm -v "$PWD":/h -w /h node:24 sh -c 'npm i --no-save yaml@2.5.1 >/dev/null 2>&1 && node validate.mjs'
+// Run from the repository root: npm install && npm run validate
 import { readFile } from 'node:fs/promises';
 import YAML from 'yaml';
 

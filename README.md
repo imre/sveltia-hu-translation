@@ -4,18 +4,18 @@
 
 This repository has the Hungarian (`hu`) translation of the Sveltia CMS user interface. It also has the review notes, the glossary and a validator, so other Hungarian speakers can check and improve the translation before it's submitted upstream.
 
-| | Strings | Proposed upstream change |
+| | Strings | Upstream pull request (draft) |
 |---|---|---|
-| [`sveltia-cms/hu.yaml`](sveltia-cms/hu.yaml) | 1,117 | [imre/sveltia-cms#1](https://github.com/imre/sveltia-cms/pull/1) |
-| [`sveltia-ui/hu.yaml`](sveltia-ui/hu.yaml) | 98 | [imre/sveltia-ui#1](https://github.com/imre/sveltia-ui/pull/1) |
+| [`sveltia-cms/hu.yaml`](sveltia-cms/hu.yaml) | 1,131 | [sveltia/sveltia-cms#1167](https://github.com/sveltia/sveltia-cms/pull/1167) |
+| [`sveltia-ui/hu.yaml`](sveltia-ui/hu.yaml) | 100 | [sveltia/sveltia-ui#31](https://github.com/sveltia/sveltia-ui/pull/31) |
 
 Upstream tracking issue: [sveltia/sveltia-cms#315](https://github.com/sveltia/sveltia-cms/issues/315).
 
 ## Status
-- **Draft, under native-speaker review.** The translation was drafted with AI assistance and proofread string by string against the English. A native Hungarian speaker who uses Sveltia CMS is doing the final review.
+- **Draft, under native-speaker review.** The translation was drafted with AI assistance and proofread string by string against the English. Imre Draskovits, a native Hungarian speaker who uses Sveltia CMS, is proofreading it before the PRs are marked ready. Reviews from other Hungarian speakers are very welcome.
 - It is checked against the English at:
-  - `sveltia-cms` `src/lib/locales/en-US.yaml` @ [`14a2e1dace2e`](https://github.com/sveltia/sveltia-cms/blob/14a2e1dace2e/src/lib/locales/en-US.yaml) (15 Nov 2026)
-  - `sveltia-ui` `src/lib/locales/en-US.yaml` @ [`c3964c89ac7b`](https://github.com/sveltia/sveltia-ui/blob/c3964c89ac7b/src/lib/locales/en-US.yaml)
+  - `sveltia-cms` `src/lib/locales/en-US.yaml` @ [`6510367d859a`](https://github.com/sveltia/sveltia-cms/blob/6510367d859a/src/lib/locales/en-US.yaml) (16 Nov 2026)
+  - `sveltia-ui` `src/lib/locales/en-US.yaml` @ [`a71ea4284a47`](https://github.com/sveltia/sveltia-ui/blob/a71ea4284a47/src/lib/locales/en-US.yaml) (15 Nov 2026)
 - Both files pass Sveltia's own `scripts/check-locales.js` with 0 errors and 0 warnings.
 
 ## How to review
@@ -24,17 +24,13 @@ Upstream tracking issue: [sveltia/sveltia-cms#315](https://github.com/sveltia/sv
 2. Check the [style decisions](#style-decisions) and the [glossary](#glossary), and especially the [strings worth a careful look](#strings-worth-a-careful-look).
 3. Leave feedback:
    - as an [issue](../../issues) here;
-   - as a line comment on the upstream proposals linked above;
+   - as a line comment on the upstream pull requests linked above;
    - or as a pull request against this repository.
 
 ## Validating changes
 ```sh
 npm install
 npm run validate
-```
-Or, without a local Node.js:
-```sh
-docker run --rm -v "$PWD":/h -w /h node:24 sh -c 'npm i --no-save yaml@2.5.1 >/dev/null 2>&1 && node validate.mjs'
 ```
 The validator compares each `hu.yaml` with its English source. It checks:
 - YAML syntax;
@@ -66,6 +62,8 @@ The validator compares each `hu.yaml` with its English source. It checks:
 | asset | médiafájl |
 | Assets / media library | Médiatár |
 | folder | mappa |
+| destination folder | célmappa |
+| move | áthelyezés |
 | publish | közzététel |
 | draft | piszkozat |
 | slug | URL-azonosító |
@@ -88,6 +86,8 @@ The validator compares each `hu.yaml` with its English source. It checks:
 | restore | visszaállítás |
 | clear | kiürítés |
 | fork | fork / forkolás |
+| pull request | pull request |
+| contributor | közreműködő |
 | maintainer | karbantartó |
 
 ## Strings worth a careful look

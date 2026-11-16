@@ -118,11 +118,13 @@ text_editor:
   heading_6: Címsor 6
   bulleted_list: Felsorolás
   numbered_list: Számozott lista
+  task_list: Feladatlista
   blockquote: Idézet
   code_block: Kódblokk
   # Inline style button aria-labels
   bold: Félkövér
   italic: Dőlt
+  underline: Aláhúzott
   strikethrough: Áthúzott
   code: Kód
   link: Hivatkozás
