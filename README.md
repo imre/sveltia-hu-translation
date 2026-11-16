@@ -46,7 +46,7 @@ The validator compares each `hu.yaml` with its English source. It checks:
 - **Buttons and actions:** noun forms: Mentés, Törlés, Mégse, Közzététel, Feltöltés, Duplikálás.
 - **Capitalisation:** sentence case (only the first word capitalised), not English Title Case.
 - **Quotes:** „…” in prose, straight quotes around code and technical terms.
-- **Articles before placeholders:** „a(z) {$name}” wherever the following word is unknown.
+- **No article directly before a placeholder.** The article depends on the next sound, so „a(z)” is avoided. Instead, the value goes after a colon („a következő tárolóhoz: „{$repo}””), in parentheses after its noun („a beállítás (`{$option}`)”), or in a label form („Érvénytelen mezőnév: `{$name}`”).
 - **Plurals:** nouns stay singular after numerals, so the `one` and `*` variants are often identical.
 - **Developer-facing config messages (`config.*`):** field type names stay in English („List típusú mező”), because they are literal config values.
 - **Comments:** left in English, as the [localization guide](https://github.com/sveltia/sveltia-cms/blob/main/src/lib/locales/README.md) requires.
