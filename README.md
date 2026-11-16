@@ -46,6 +46,7 @@ The validator compares each `hu.yaml` with its English source. It checks:
 - **Buttons and actions:** noun forms: Mentés, Törlés, Mégse, Közzététel, Feltöltés, Duplikálás.
 - **Capitalisation:** sentence case (only the first word capitalised), not English Title Case.
 - **Quotes:** „…” in prose, straight quotes around code and technical terms.
+- **No dashes:** colons, commas or parentheses instead, e.g. „Üdvözlet: {$name}”, „{$entry}: {$field}”.
 - **No article directly before a placeholder.** The article depends on the next sound, so „a(z)” is avoided. Instead, the value goes after a colon („a következő tárolóhoz: „{$repo}””), in parentheses after its noun („a beállítás (`{$option}`)”), or in a label form („Érvénytelen mezőnév: `{$name}`”).
 - **Plurals:** nouns stay singular after numerals, so the `one` and `*` variants are often identical.
 - **Developer-facing config messages (`config.*`):** field type names stay in English („List típusú mező”), because they are literal config values.
@@ -99,11 +100,11 @@ These have reasonable alternatives. Opinions are welcome.
 | `assets` | Médiatár | Médiafájlok |
 | `content_library` | Tartalomtár | |
 | `sort_keys.commit_author` / `commit_date` | Módosította / Módosítás dátuma | Frissítette / Frissítés dátuma |
-| `ascending` / `descending` | A–Z / Z–A | Növekvő / Csökkenő |
+| `ascending` / `descending` | {$label}, növekvő / csökkenő | Decided (was A–Z / Z–A) |
 | `sign_in_with_x` | Bejelentkezés {$service}-fiókkal | Hyphenated suffix after a placeholder |
 | `powered_by` | Működteti: {$name} | |
 | `create_entry_title`, `edit_x`, `rename_x`, … | „Létrehozás: {$name}” pattern | „Új {$name}” |
-| `bulk_edit_cell` | {$entry} – {$field} | {$entry}: {$field} |
+| `bulk_edit_cell` | {$entry}: {$field} | Decided (was {$entry} – {$field}) |
 | `edit_x_locale` / `preview_x_locale` | … ({$locale}) | Locale shown in parentheses |
 | `copy_from_x` / `translate_from_x` | Másolás innen: {$locale} | Másolás {$locale} nyelvről |
 | `move_to` | Áthelyezés máshová… | Opens a dialog asking for the target position |
