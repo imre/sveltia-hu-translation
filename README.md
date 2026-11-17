@@ -4,15 +4,16 @@
 
 This repository has the Hungarian (`hu`) translation of the Sveltia CMS user interface. It also has the review notes, the glossary and a validator, so other Hungarian speakers can check and improve the translation before it's submitted upstream.
 
-| | Strings | Upstream pull request (draft) |
+| | Strings | Upstream pull request |
 |---|---|---|
-| [`sveltia-cms/hu.yaml`](sveltia-cms/hu.yaml) | 1,131 | [sveltia/sveltia-cms#1167](https://github.com/sveltia/sveltia-cms/pull/1167) |
-| [`sveltia-ui/hu.yaml`](sveltia-ui/hu.yaml) | 100 | [sveltia/sveltia-ui#31](https://github.com/sveltia/sveltia-ui/pull/31) |
+| [`sveltia-cms/hu.yaml`](sveltia-cms/hu.yaml) | 1,131 | [sveltia/sveltia-cms#1167](https://github.com/sveltia/sveltia-cms/pull/1167) (open, ready to merge) |
+| [`sveltia-ui/hu.yaml`](sveltia-ui/hu.yaml) | 100 | [sveltia/sveltia-ui#31](https://github.com/sveltia/sveltia-ui/pull/31), [#32](https://github.com/sveltia/sveltia-ui/pull/32) (merged) |
 
 Upstream tracking issue: [sveltia/sveltia-cms#315](https://github.com/sveltia/sveltia-cms/issues/315).
 
 ## Status
-- **Draft, under native-speaker review.** The translation was drafted with AI assistance and proofread string by string against the English. Imre Draskovits, a native Hungarian speaker who uses Sveltia CMS, is proofreading it before the PRs are marked ready. Reviews from other Hungarian speakers are very welcome.
+- **Ready to merge.** The translation was drafted with AI assistance and proofread string by string against the English by Imre Draskovits, a native Hungarian speaker who uses Sveltia CMS. It includes the review feedback from thamas (no „a(z)” before placeholders, no dashes). The Sveltia UI strings are merged upstream.
+- **Next:** converting the direct *te* address to an impersonal style, as a follow-up PR. Reviews from other Hungarian speakers are very welcome.
 - It is checked against the English at:
   - `sveltia-cms` `src/lib/locales/en-US.yaml` @ [`6510367d859a`](https://github.com/sveltia/sveltia-cms/blob/6510367d859a/src/lib/locales/en-US.yaml) (16 Nov 2026)
   - `sveltia-ui` `src/lib/locales/en-US.yaml` @ [`a71ea4284a47`](https://github.com/sveltia/sveltia-ui/blob/a71ea4284a47/src/lib/locales/en-US.yaml) (15 Nov 2026)
